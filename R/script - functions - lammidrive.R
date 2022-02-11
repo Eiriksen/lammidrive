@@ -38,7 +38,7 @@ get_mortalities = function(datepit_file){
 #' obtains the table with the tissue sample data from the lammi salmon google drive
 #' @export
 #' @examples tb_samples <- lammidrive::get_tissuesamples().
-get_tissueSamples = function(){
+get_tissueSamples = function(datepit_file){
   require(tidyverse)
   sheet <-
     googlesheets4::read_sheet(
@@ -47,7 +47,8 @@ get_tissueSamples = function(){
     mutate(
       date = dmy(date),
       pit = toupper(pit)
-      )
+      ) %>%
+    datepit::datepit_to_ID(tb_pit = read_delim(datepit_file))
   message("tissue samples sheet obtained")
   return(sheet)
 }
