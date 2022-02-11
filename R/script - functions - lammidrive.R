@@ -35,14 +35,14 @@ get_mortalities = function(datepit_file){
 
 #' get_tissuesamples
 #'
-#' obtains the table with the tissue sample data from the lammi salmon google drive 
+#' obtains the table with the tissue sample data from the lammi salmon google drive
 #' @export
 #' @examples tb_samples <- lammidrive::get_tissuesamples().
 get_tissueSamples = function(){
   require(tidyverse)
   sheet <-
     googlesheets4::read_sheet(
-      "https://docs.google.com/spreadsheets/d/19kLkPKD_pIbT02fvpxxfp9CNp7lsHlYt7pjNTAWtRnI"
+      "https://docs.google.com/spreadsheets/d/1kVB87s3rcLkgx0pj9DKAiMD2RmxYRiXB"
       )%>%
     mutate(
       date = dmy(date),
@@ -156,7 +156,7 @@ tempData_extend = function(df_temp, date, columns){
 #' @export
 datesBetween = function(date_a,date_b) {
   require(lubridate)
-  
+
   n_days <- interval(date_a,date_b)/days(1)
   dates = date_a + days(0:n_days)
   return(dates)
