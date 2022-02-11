@@ -41,8 +41,8 @@ get_mortalities = function(datepit_file){
 get_tissueSamples = function(datepit_file){
   require(tidyverse)
   sheet <-
-    googlesheets4::read_sheet(
-      "https://docs.google.com/spreadsheets/d/1kVB87s3rcLkgx0pj9DKAiMD2RmxYRiXB"
+    openxlsx::read.xlsx(
+      "https://drive.google.com/uc?export=download&id=1kVB87s3rcLkgx0pj9DKAiMD2RmxYRiXB"
       )%>%
     mutate(
       date = dmy(date),
